@@ -2,12 +2,13 @@
 #include <sys/types.h>
 #include <windows.h>
 #include "logic.h"
-//Todo Remember to make exit method and make it return an int each time 
+//todo Bubble sort for 6 and algorithm sort for 7
+
+
 int main(){
     SetConsoleOutputCP(CP_UTF8);
     int branches,option;
     char choice[100];
-    double sales[BRANCHES][MONTHS];//*BRANCHES is max number allowed
 
     printf("Enter The Number Of Branches:");
     scanf("%d",&branches);//* Used For Loop Through Input and Output Of Array "sales[][]"
@@ -16,6 +17,8 @@ int main(){
         printf("Invalid Input Exiting Program...\n");
         return 0;
     }
+    double sales[branches][MONTHS];
+
     while (1){
         printf("\n  - - - - - - - - - - - - - - - - - - - - - - -RETAIL COMPANY DATABASE- - - - - - - - - - - - - - - - - - - - - - -\n");
         printf("  ❘      0.Exit                                                                           No. Of Branches:%d        ❘\n",branches);
@@ -38,15 +41,15 @@ int main(){
         }
 
         else if (option == 1){
-            continue;
+            inputSales(sales);
         }
 
         else if (option == 2){
-            continue;
+            printSales(sales);
         }
 
         else if (option == 3){
-            continue;
+            printf("Total Company Sales: $%.2f\n",totalSales(sales,branches));
         }
         
         else if (option == 4){
