@@ -32,18 +32,9 @@ int main(){
         sscanf(choice,"%d",&option);
 
         if (option == 0){
-            char exit_choice;
-            printf("Are You Sure You Want To Exit(Y/n):\n");
-            scanf(" %c",&exit_choice);
-            getchar();
-            if (exit_choice =='Y' || exit_choice == 'y')
-                break;
-            else if(exit_choice == 'N' || exit_choice == 'n')
-                continue;
-            else{
-                printf("Invalid Input Try Again\n");
-                continue;
-            }
+            if(exit_menu())
+            break;
+        continue;
         }
 
         else if (option == 1){
