@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <sys/types.h>
 #include <windows.h>
-#include "logfunc.h"
+#include "logic.h"
 //Todo Remember to make exit method and make it return an int each time 
 int main(){
     SetConsoleOutputCP(CP_UTF8);

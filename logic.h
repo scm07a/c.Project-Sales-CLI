@@ -1,5 +1,5 @@
-#ifndef LOGFUNC_H
-#define LOGFUNC_H
+#ifndef LOGIC_H
+#define LOGIC_H
 #define BRANCHES 100
 #define MONTHS 12 
 
