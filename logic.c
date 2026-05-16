@@ -1,9 +1,6 @@
 #include <stdio.h>
 #define MONTHS 12 
 
-char branchNo_str[100];
-int branchNo,branchstart;
-
 int exit_menu(){
     char choice;
     printf("Are You Sure You Want To Exit?(Y/n)");
@@ -14,26 +11,29 @@ int exit_menu(){
     return 0;
 }
 
-void inputSales(double sales[][MONTHS]){
-
+void inputSales(double sales[][MONTHS],int branches){
+    char branchNo_str[100];
+    int branchNo,branchstart;  
     printf("How Many Of Your Branches Do You Want To Input Sales Of:");
     fgets(branchNo_str,sizeof(branchNo_str),stdin);
-    sscanf(branchNo_str,"%d",&branchNo);
-
-    if (branchNo<=0){ 
-        printf("Invalid Input Try Again!");
+    if(sscanf(branchNo_str,"%d",&branchstart)!=1){
+        printf("Invalid Input Try Again!\n");
         return;
     }
+
     printf("Enter Which Branch You Want To Start From:");
     fgets(branchNo_str,sizeof(branchNo_str),stdin);
-    sscanf(branchNo_str,"%d",&branchstart);
-
-    if (branchstart>branchNo) {
-        printf("Invalid Choice Only %d Branches Allowed\n",branchNo);
+    if(sscanf(branchNo_str,"%d",&branchstart)!=1){
+        printf("Invalid Input Try Again!\n");
         return;
     }
-
-    for (int i=branchstart-1;i<branchNo;i++){  
+    int end=branchstart+branchNo-1;
+    
+    if (branchNo<=0 || end>branches|| branchstart<=0){ 
+            printf("Invalid Input Try Again!\n");
+            return;
+        }
+    for (int i=branchstart-1;i<end;i++){  
         for (int j=0;j<MONTHS;j++){
             printf("Enter Sales For Branch No. %d , Month No. %d:",i+1,j+1);
             scanf("%lf",&sales[i][j]);
@@ -42,26 +42,31 @@ void inputSales(double sales[][MONTHS]){
     getchar();
 }
 
-void printSales(double sales[][MONTHS]){
-    if (!*sales) {
-        printf("There Isn't Any Data Stored!");
-        return;
-    }
-    
-    printf("Enter Many Of Your Branches Do You Want To Print The Sales Of:");
-    fgets(branchNo_str,sizeof(branchNo_str),stdin);
-    sscanf(branchNo_str,"%d",&branchNo);
+void printSales(double sales[][MONTHS],int branches){
+    char branchNo_str[100];
+    int branchNo,branchstart;
 
-    if (branchNo<=0){ 
-        printf("Invalid Input Try Again!");
+    printf("Enter How Many Of Your Branches Do You Want To Print The Sales Of:");
+    fgets(branchNo_str,sizeof(branchNo_str),stdin);
+    if(sscanf(branchNo_str,"%d",&branchstart)!=1){
+        printf("Invalid Input Try Again!\n");
         return;
     }
+
 
     printf("Enter Which Branch You Want To Start From:");
     fgets(branchNo_str,sizeof(branchNo_str),stdin);
-    sscanf(branchNo_str,"%d",&branchstart);
+    if(sscanf(branchNo_str,"%d",&branchstart)!=1){
+        printf("Invalid Input Try Again!\n");
+        return;
+    }
 
-    for(int i=branchstart-1;i<branchNo;i++){
+    int end=branchstart+branchNo-1;
+        if (branchNo<=0||end>branches|| branchstart<=0){ 
+        printf("Invalid Input Try Again!\n");
+        return;
+    }
+    for(int i=branchstart-1;i<end;i++){
         for (int j=0;j<MONTHS;j++){
             printf("Branch No. %d Month %d : %f\n",i+1,j+1,sales[i][j]);
         }

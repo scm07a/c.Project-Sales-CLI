@@ -3,8 +3,8 @@
 #define MONTHS 12 
 
 int exit_menu();
-void inputSales(double sales[][MONTHS]);
-void printSales(double sales[][MONTHS]);
+void inputSales(double sales[][MONTHS],int branches);
+void printSales(double sales[][MONTHS],int branches);
 double totalSales(double sales[][MONTHS],int branches);
 
 
