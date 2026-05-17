@@ -120,3 +120,21 @@ void percentageSales(double sales[][MONTHS], int branches){
         printf("Percentage Of Branch No.%d: %.2f%\n",i+1,percent);
     }
 }
+
+int peakSales(double sales[][MONTHS],int branches){
+    
+    float max = -999999999.f;
+    int peakMonth=0;
+    for (int i=0;i<branches;i++){
+        for (int j=0;j<MONTHS;j++){
+            double peak=sales[i][j];
+            if (peak > max)
+            {
+                max = peak;
+                peakMonth=j;
+            }
+        }
+
+    }
+    return peakMonth+1;
+}

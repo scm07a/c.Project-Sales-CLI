@@ -56,14 +56,16 @@ int main(){
         }
         
         else if (option == 5){
-            continue;
+            printf("Month No.%d Has The Peak Sales.\n",peakSales(sales,branches));
         }
         
         else if (option == 6){
+            printf("W.I.P\n");
             continue;
         }
         
         else if (option == 7){
+            printf("W.I.P\n");
             continue;
         }
 
