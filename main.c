@@ -31,13 +31,16 @@ int main(){
         printf("  ❘                                                                                                                ❘\n");
         printf("  ❘              4.Branch Percentages.                              5.Peak Sales Month.                            ❘\n");
         printf("  ❘                                                                                                                ❘\n");
-        printf("  ❘              6.Sort Each Branches By Month Sales.                 7.Sort Each Months By Branch Sales.             ❘\n");
+        printf("  ❘              6.Sort Each Branches By Month Sales.                 7.Sort Each Months By Branch Sales.          ❘\n");
         printf("  ❘                                                                                                                ❘\n");
         printf("  ❘                                                  8.Save Data                                                   ❘\n");
         printf("  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
         printf("  Enter Your Choice:");
         fgets(choice,sizeof(choice),stdin);
-        sscanf(choice,"%d",&option);
+        if(sscanf(choice,"%d",&option)!=1){
+            printf("Invalid Input Try Again\n");
+            continue;
+        }
 
         if (option == 0){
             if(exit_menu()){
