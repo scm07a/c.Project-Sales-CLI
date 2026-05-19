@@ -223,4 +223,3 @@ void loaddata(double sales[][MONTHS],int *branches){
     }
     fclose(file);
 }
-

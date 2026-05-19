@@ -14,5 +14,4 @@ void MonthsByBranch(double sales[][MONTHS],int branches);
 void savedata(double sales[][MONTHS],int branches);
 void loaddata(double sales[][MONTHS],int *branches);
 
-
 #endif
