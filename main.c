@@ -4,37 +4,24 @@
 
 int main(){
     SetConsoleOutputCP(CP_UTF8);
-    char choice[100],branch_chrs[100];
+    char choice[100];
     int branches=0,option;
     double sales[MAXBRANCHES][MONTHS];
     loaddata(sales,&branches);
-    
-    if (branches<=0){
-        printf("Enter The Number Of Branches:");
-        fgets(branch_chrs,sizeof(branch_chrs),stdin);
-        if (sscanf(branch_chrs,"%d",&branches)!=1){
-            printf("Invalid Input... Exiting Program\n");
-            return 0;
-        }
-        if (branches<=0){
-            printf("Invalid Input... Exiting Program\n");
-            return 0;
-        }
-    }
-    
     while (1){
-        printf("\n  - - - - - - - - - - - - - - - - - - - - - - -RETAIL COMPANY DATABASE- - - - - - - - - - - - - - - - - - - - - - -\n");
-        printf("  ❘                                                 No. Of Branches:%d                                              ❘\n",branches);
-        printf("  ❘              0.Exit                                             1.Input Sales Data.                            ❘\n");
+        checkNoBranch(&branches);
+        printf("\n  = = = = = = = = = = = = = = = = = = = = = = RETAIL COMPANY DATABASE = = = = = = = = = = = = = = = = = = = = = = =\n");
+        printf("  ❘      0.Exit                                                                             No. Of Branches:%d      ❘\n",branches);
+        printf("  ❘              1.Input Sales Data.                                2.Show Sales Data.                             ❘\n");
         printf("  ❘                                                                                                                ❘\n");
-        printf("  ❘              2.Show Sales Data.                                 3.Total Company Sales.                         ❘\n");
+        printf("  ❘              3.Total Company Sales.                             4.Branch Percentages.                          ❘\n");
         printf("  ❘                                                                                                                ❘\n");
-        printf("  ❘              4.Branch Percentages.                              5.Peak Sales Month.                            ❘\n");
+        printf("  ❘              5.Peak Sales Month.                                6.Sort Each Branches By Month Sales.           ❘\n");
         printf("  ❘                                                                                                                ❘\n");
-        printf("  ❘              6.Sort Each Branches By Month Sales.               7.Sort Each Months By Branch Sales.            ❘\n");
+        printf("  ❘              7.Sort Each Months By Branch Sales.                8.Change No. Of Branches.                      ❘\n");
         printf("  ❘                                                                                                                ❘\n");
-        printf("  ❘                                                 8.Save Data.                                                   ❘\n");
-        printf("  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
+        printf("  ❘              9.Save Data.                                       10.Reset Data                                  ❘\n");
+        printf("  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = \n");
         printf("  Enter Your Choice:");
         fgets(choice,sizeof(choice),stdin);
         if(sscanf(choice,"%d",&option)!=1){
@@ -72,8 +59,18 @@ int main(){
         else if (option == 7)
             MonthsByBranch(sales,branches);
         
-        else if (option == 8)
+        else if (option == 8){
+            inputbranch(&branches);
             savedata(sales,branches);
+        }
+
+        else if (option == 9)
+            savedata(sales,branches);
+
+        else if (option == 10){
+            resetdata(sales,&branches);
+            checkNoBranch(&branches);
+        }
 
         else printf("Invalid Choice Try Again!\n");
     }

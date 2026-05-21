@@ -12,6 +12,8 @@ int peakSales(double sales[][MONTHS],int branches);
 void BranchesByMonth(double sales[][MONTHS],int branches);
 void MonthsByBranch(double sales[][MONTHS],int branches);
 void savedata(double sales[][MONTHS],int branches);
-void loaddata(double sales[][MONTHS],int *branches);
-
+void loaddata(double sales[][MONTHS],int* branches);
+void resetdata(double sales[][MONTHS],int* branches);
+void checkNoBranch(int* branches);
+void inputbranch(int* branches);
 #endif
