@@ -210,16 +210,18 @@ void savedata(double sales[][MONTHS],int branches){
     }
     fclose(file);
 }
-void loaddata(double sales[][MONTHS],int *branches){
+void loaddata(double sales[][MONTHS],int branches){
     FILE*file=fopen("salesData.txt","r");
     if (file==NULL){
         printf("No Saved Data Found...\n");
         return;
     }
-    fscanf(file,"%d",branches);
-    for (int i=0;i<*branches;i++){
+    fscanf(file,"%d",&branches);
+    for (int i=0;i<branches;i++){
         for (int j=0;j<MONTHS;j++)
             fscanf(file,"%lf",&sales[i][j]);
     }
     fclose(file);
 }
+
+// void resetdata(double sales[][MONTHS],int branches)

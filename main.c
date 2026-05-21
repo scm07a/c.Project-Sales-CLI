@@ -7,7 +7,7 @@ int main(){
     char choice[100],branch_chrs[100];
     int branches=0,option;
     double sales[MAXBRANCHES][MONTHS];
-    loaddata(sales,&branches);
+    loaddata(sales,branches);
     
     if (branches<=0){
         printf("Enter The Number Of Branches:");
