@@ -142,7 +142,7 @@ int peakSales(double sales[][MONTHS],int branches){
 void BranchesByMonth(double sales[][MONTHS],int branches){
     char new_month[50];
     int int_month;
-    printf("Choose The Month You Want To Sort Each Branch By:\n1.January 2.Feburary 3.March 4.April\n5.May 6.June 7.July 8.August\n9.September 10.October 11.November 12.December\n:");
+    printf("Choose The Month You Want To Sort Each Branch By:\n1.January 2.Feburary 3.March 4.April\n5.May     6.June     7.July     8.August\n9.September 10.October 11.November 12.December\n:");
     fgets(new_month,sizeof(new_month),stdin);
     if(sscanf(new_month,"%d",&int_month)!=1){
         printf("Invalid Input Try Again!\n");
