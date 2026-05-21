@@ -6,7 +6,7 @@ int exit_menu(){
     printf("Are You Sure You Want To Exit?(Y/n)");
     scanf(" %c",&choice);
     getchar();
-    if (choice =='Y' || choice == 'y')
+    if (choice == 'Y' || choice == 'y')
     return 1;
     return 0;
 }
@@ -223,5 +223,3 @@ void loaddata(double sales[][MONTHS],int *branches){
     }
     fclose(file);
 }
-
-// void resetdata(double sales[][MONTHS],int branches)

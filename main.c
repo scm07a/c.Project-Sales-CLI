@@ -24,7 +24,7 @@ int main(){
     
     while (1){
         printf("\n  - - - - - - - - - - - - - - - - - - - - - - -RETAIL COMPANY DATABASE- - - - - - - - - - - - - - - - - - - - - - -\n");
-        printf("  ❘                                             No. Of Branches:%d                                                  ❘\n",branches);
+        printf("  ❘                                                 No. Of Branches:%d                                              ❘\n",branches);
         printf("  ❘              0.Exit                                             1.Input Sales Data.                            ❘\n");
         printf("  ❘                                                                                                                ❘\n");
         printf("  ❘              2.Show Sales Data.                                 3.Total Company Sales.                         ❘\n");
@@ -33,7 +33,7 @@ int main(){
         printf("  ❘                                                                                                                ❘\n");
         printf("  ❘              6.Sort Each Branches By Month Sales.               7.Sort Each Months By Branch Sales.            ❘\n");
         printf("  ❘                                                                                                                ❘\n");
-        printf("  ❘                                                  8.Save Data                                                   ❘\n");
+        printf("  ❘                                                 8.Save Data.                                                   ❘\n");
         printf("  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
         printf("  Enter Your Choice:");
         fgets(choice,sizeof(choice),stdin);
@@ -72,7 +72,7 @@ int main(){
         else if (option == 7)
             MonthsByBranch(sales,branches);
         
-        else if (option==8)
+        else if (option == 8)
             savedata(sales,branches);
 
         else printf("Invalid Choice Try Again!\n");
