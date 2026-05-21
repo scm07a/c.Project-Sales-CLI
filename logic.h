@@ -16,4 +16,5 @@ void loaddata(double sales[][MONTHS],int* branches);
 void resetdata(double sales[][MONTHS],int* branches);
 void checkNoBranch(int* branches);
 void inputbranch(int* branches);
+int checkInput(int branches,int* branchNo,int *branchstart,int *end);
 #endif
