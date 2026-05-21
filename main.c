@@ -20,7 +20,7 @@ int main(){
         printf("  ❘                                                                                                                ❘\n");
         printf("  ❘              7.Sort Each Months By Branch Sales.                8.Change No. Of Branches.                      ❘\n");
         printf("  ❘                                                                                                                ❘\n");
-        printf("  ❘              9.Save Data.                                       10.Reset Data                                  ❘\n");
+        printf("  ❘              9.Save Data.                                       10.Reset Data.                                 ❘\n");
         printf("  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = \n");
         printf("  Enter Your Choice:");
         fgets(choice,sizeof(choice),stdin);
