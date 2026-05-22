@@ -2,47 +2,58 @@
 #define MONTHS 12 
 #define MAXBRANCHES 100
 
-int exit_menu(){
-    char choice;
-    printf("Are You Sure You Want To Exit?(Y/n)");
-    scanf(" %c",&choice);
-    getchar();
-    if (choice == 'Y' || choice == 'y')
+int checkBranchInp(int* branchCount){
+    char buff[100];
+    fgets(buff,sizeof(buff),stdin);
+    if (sscanf(buff,"%d",branchCount)!=1){
+        return 0;
+    }
     return 1;
-    return 0;
 }
 
-int checkInput(int branches,int* branchNo,int *branchstart,int *end){
-    char branchNo_str[100];
-    printf("How Many Branches Do You Want To Process:");
-    fgets(branchNo_str,sizeof(branchNo_str),stdin);
-    if(sscanf(branchNo_str,"%d",branchNo)!=1){
-        // printf("Invalid Input Try Again!\n");
+int branchRange(int* branchStart,int* end,int* branchCount){
+    char buff[100];
+    fgets(buff,sizeof(buff),stdin);
+    if(sscanf(buff,"%d",branchStart)!=1){
+        printf("Invalid Input Try Again\n");
         return 0;
     }
+    *end=*branchStart+*branchCount-1;
+    return 1;
+}
 
-    printf("Enter Which Branch You Want To Start From:");
-    fgets(branchNo_str,sizeof(branchNo_str),stdin);
-    if(sscanf(branchNo_str,"%d",branchstart)!=1){
-        // printf("Invalid Input Try Again!\n");
+int rangeValid(int* branchStart,int* branchCount,int* end, int branches){
+    if (*branchCount<=0 || *end>branches|| *branchStart<=0){ 
         return 0;
-    }
-    *end=*branchstart+*branchNo-1;
-    
-    if (*branchNo<=0 || *end>branches|| *branchstart<=0){ 
-            // printf("Invalid Input Try Again!\n");
-            return 0;
         }
     return 1;
 }
 
-void inputSales(double sales[][MONTHS],int branches){
-    int branchNo,branchstart,end;
-    if(!checkInput(branches,&branchNo,&branchstart,&end)){
+int checkInput(int *branchStart,int* branchCount, int* end,int branches){
+    printf("Enter Number Of Branches To Process (1-%d):",branches);
+    if(!checkBranchInp(branchCount)){
         printf("Invalid Input Try Again\n");
+        return 0;
+    }
+    printf("Enter Which Branch To Start From:");
+    if(!branchRange(branchStart,end,branchCount)){
+        printf("Invalid Input Try Again\n");
+        return 0;
+    }
+    if(!rangeValid(branchStart,branchCount,end,branches)){
+        printf("Invalid Input Try Again\n");
+        return 0;
+    }
+    return 1;
+}
+
+
+void inputSales(double sales[][MONTHS],int branches){
+    int branchCount,branchStart,end;
+    if(!checkInput(&branchStart,&branchCount,&end,branches)){
         return;
     }
-    for (int i=branchstart-1;i<end;i++){  
+    for (int i=branchStart-1;i<end;i++){  
         for (int j=0;j<MONTHS;j++){
             printf("Enter Sales For Branch No. %d , Month No. %d:",i+1,j+1);
             scanf("%lf",&sales[i][j]);
@@ -52,12 +63,11 @@ void inputSales(double sales[][MONTHS],int branches){
 }
 
 void printSales(double sales[][MONTHS],int branches){
-    int branchNo,branchstart,end;
-    if(!checkInput(branches,&branchNo,&branchstart,&end)){
-        printf("Invalid Input Try Again\n");
+    int branchCount,branchStart,end;
+    if(!checkInput(&branchStart,&branchCount,&end,branches)){
         return;
-    }    
-    for(int i=branchstart-1;i<end;i++){
+    }
+    for(int i=branchStart-1;i<end;i++){
         for (int j=0;j<MONTHS;j++){
             printf("Branch No. %d Month %d : %.2f\n",i+1,j+1,sales[i][j]);
         }
@@ -75,15 +85,13 @@ double totalSales(double sales[][MONTHS],int branches){
 }
 
 void percentageSales(double sales[][MONTHS], int branches){
-    char branchNo_str[100];
-    int branchNo,branchstart,end;
+    int branchCount,branchStart,end;
     double percent;
-    if(!checkInput(branches,&branchNo,&branchstart,&end)){
-        printf("Invalid Input Try Again\n");
+    if(!checkInput(&branchStart,&branchCount,&end,branches)){
         return;
-    } 
+    }
     double companyTotal=totalSales(sales,branches);
-    for (int i=branchstart-1;i<end;i++){
+    for (int i=branchStart-1;i<end;i++){
 
         double branchTotal=0;//* Reset For Each Branch
 
@@ -98,7 +106,7 @@ void percentageSales(double sales[][MONTHS], int branches){
 
 int peakSales(double sales[][MONTHS],int branches){
     
-    float max = -999999999;
+    double max = -999999999;
     int peakMonth=0;
     for (int i=0;i<branches;i++){
         for (int j=0;j<MONTHS;j++){
@@ -266,4 +274,3 @@ void inputbranch(int* branches){
     *branches=0;
     checkNoBranch(branches);
 }
-

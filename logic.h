@@ -3,7 +3,6 @@
 #define MONTHS 12 
 #define MAXBRANCHES 100
 
-int exit_menu();
 void inputSales(double sales[][MONTHS],int branches);
 void printSales(double sales[][MONTHS],int branches);
 double totalSales(double sales[][MONTHS],int branches);
@@ -16,5 +15,8 @@ void loaddata(double sales[][MONTHS],int* branches);
 void resetdata(double sales[][MONTHS],int* branches);
 void checkNoBranch(int* branches);
 void inputbranch(int* branches);
-int checkInput(int branches,int* branchNo,int *branchstart,int *end);
+int checkBranchInp(int* branchCount);
+int branchRange(int* branchStart,int* end,int* branchCount);
+int rangeValid(int* branchStart,int* branchCount,int* end, int branches);
+int checkInput(int *branchStart,int* branchCount, int* end,int branches);
 #endif

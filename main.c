@@ -30,10 +30,17 @@ int main(){
         }
 
         if (option == 0){
-            if(exit_menu()){
-                savedata(sales,branches);
+            char choice;
+            printf("Are You Sure You Want To Exit?(Y/n)");
+            scanf(" %c",&choice);
+            getchar();
+            if (choice == 'Y' || choice == 'y')
                 break;
-            }
+            else if (choice == 'N' || choice == 'n')
+                continue;
+            else 
+                printf("Invalid Input...\n");
+            
         }
 
         else if (option == 1){
