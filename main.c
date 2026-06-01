@@ -11,7 +11,7 @@ int main(){
     while (1){
         printf("\n  = = = = = = = = = = = = = = = = = = = = = = RETAIL COMPANY DATABASE = = = = = = = = = = = = = = = = = = = = = = =\n");
         printf("  |     0.Exit                                                                             No. Of Branches:%d      |\n",branches);
-        printf("  |            1.Input Sales Data.                                2.Show Sales Data.                              |\n");
+        printf("  |              1.Input Sales Data.                                2.Show Sales Data.                            |\n");
         printf("  |                                                                                                               |\n");
         printf("  |              3.Total Company Sales.                             4.Branch Percentages.                         |\n");
         printf("  |                                                                                                               |\n");
