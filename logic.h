@@ -19,4 +19,5 @@ int checkBranchInp(int* branchCount);
 int branchRange(int* branchStart,int* end,int* branchCount);
 int rangeValid(int* branchStart,int* branchCount,int* end, int branches);
 int checkInput(int *branchStart,int* branchCount, int* end,int branches);
+void clear_buffer();
 #endif

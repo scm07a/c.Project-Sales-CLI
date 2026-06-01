@@ -2,7 +2,6 @@
 #include "logic.h"
 
 int main(){
-    char choice[100];
     int branches=0,option;
     double sales[MAXBRANCHES][MONTHS]={0};
     loaddata(sales,&branches);
@@ -22,17 +21,18 @@ int main(){
         printf("  |              9.Save Data.                                       10.Reset Data.                                |\n");
         printf("  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n");
         printf("  Enter Your Choice:");
-        fgets(choice,sizeof(choice),stdin);
-        if(sscanf(choice,"%d",&option)!=1){
+        if(scanf("%d",&option)!=1){
             printf("Invalid Input Try Again\n");
+            clear_buffer();
             continue;
         }
+        clear_buffer();
 
         if (option == 0){
             char choice;
             printf("Are You Sure You Want To Exit?(Y/n)");
             scanf(" %c",&choice);
-            getchar();
+            clear_buffer();
             if (choice == 'Y' || choice == 'y'){
                 savedata(sales,branches);
                 break;
@@ -41,7 +41,6 @@ int main(){
                 continue;
             else 
                 printf("Invalid Input...\n");
-            
         }
 
         else if (option == 1){
