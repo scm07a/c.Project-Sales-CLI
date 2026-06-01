@@ -171,7 +171,7 @@ void MonthsByBranch(double sales[][MONTHS],int branches){
     int branch_choice;
     double sortedMonths[branches][MONTHS];
 
-    //*Copying Array 
+    //? Copying Array Into Seperate Array So It Doesn't modify original 
     for (int i=0;i<branches;i++){
         for (int j=0;j<MONTHS;j++)
         sortedMonths[i][j]=sales[i][j];

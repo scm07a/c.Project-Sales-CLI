@@ -1,28 +1,26 @@
 #include <stdio.h>
-#include <windows.h>
 #include "logic.h"
 
 int main(){
-    SetConsoleOutputCP(CP_UTF8);
     char choice[100];
     int branches=0,option;
-    double sales[MAXBRANCHES][MONTHS];
+    double sales[MAXBRANCHES][MONTHS]={0};
     loaddata(sales,&branches);
     checkNoBranch(&branches);
 
     while (1){
         printf("\n  = = = = = = = = = = = = = = = = = = = = = = RETAIL COMPANY DATABASE = = = = = = = = = = = = = = = = = = = = = = =\n");
-        printf("  ❘      0.Exit                                                                             No. Of Branches:%d     ❘\n",branches);
-        printf("  ❘              1.Input Sales Data.                                2.Show Sales Data.                             ❘\n");
-        printf("  ❘                                                                                                                ❘\n");
-        printf("  ❘              3.Total Company Sales.                             4.Branch Percentages.                          ❘\n");
-        printf("  ❘                                                                                                                ❘\n");
-        printf("  ❘              5.Peak Sales Month.                                6.Sort Each Branches By Month Sales.           ❘\n");
-        printf("  ❘                                                                                                                ❘\n");
-        printf("  ❘              7.Sort Each Months By Branch Sales.                8.Change No. Of Branches.                      ❘\n");
-        printf("  ❘                                                                                                                ❘\n");
-        printf("  ❘              9.Save Data.                                       10.Reset Data.                                 ❘\n");
-        printf("  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = \n");
+        printf("  |     0.Exit                                                                             No. Of Branches:%d      |\n",branches);
+        printf("  |            1.Input Sales Data.                                2.Show Sales Data.                              |\n");
+        printf("  |                                                                                                               |\n");
+        printf("  |              3.Total Company Sales.                             4.Branch Percentages.                         |\n");
+        printf("  |                                                                                                               |\n");
+        printf("  |              5.Peak Sales Month.                                6.Sort Each Branches By Month Sales.          |\n");
+        printf("  |                                                                                                               |\n");
+        printf("  |              7.Sort Each Months By Branch Sales.                8.Change No. Of Branches.                     |\n");
+        printf("  |                                                                                                               |\n");
+        printf("  |              9.Save Data.                                       10.Reset Data.                                |\n");
+        printf("  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n");
         printf("  Enter Your Choice:");
         fgets(choice,sizeof(choice),stdin);
         if(sscanf(choice,"%d",&option)!=1){
