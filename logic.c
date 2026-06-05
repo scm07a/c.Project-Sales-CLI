@@ -207,7 +207,7 @@ void MonthsByBranch(double sales[][MONTHS],int branches){
         MonthID[i]=i+1;
     }
 
-    printf("Choose The Branch You Want To Sort Each Month(1-%d)",branches);
+    printf("Choose The Branch You Want To Sort Each Month(1-%d):",branches);
     if (scanf("%d",&branch_choice)!=1){
         printf("Invalid Input Try Again\n");
         clear_buffer();
@@ -252,7 +252,6 @@ void savedata(double sales[][MONTHS],int branches){
     for (int i=0;i<branches;i++){
         for (int j=0;j<MONTHS;j++)
             fprintf(file,"%f ",sales[i][j]);
-
         fprintf(file,"\n");
     }
     //*Closes File To Prevent Any Further Edits
@@ -298,8 +297,7 @@ void resetdata(double sales[][MONTHS],int *branches){
     }
     fclose(file);//* Opening And Closing Without Any Edits Formats The File
     
-    //*Formats Data The Actual Arrays And No. of branches
-    //*For Later Use
+    //*Formats Data Of The Arrays And No. of branches
     for (int i=0;i<*branches;i++){
         for(int j=0;j<MONTHS;j++)
         sales[i][j]=0;
@@ -309,6 +307,7 @@ void resetdata(double sales[][MONTHS],int *branches){
     }
 }
 
+//*Checks number of branches
 void checkNoBranch(int* branches){
     while (*branches<=0){
         printf("Enter The Number Of Branches(1-%d):", MAXBRANCHES);
@@ -324,6 +323,7 @@ void checkNoBranch(int* branches){
         }
     }
 }
+//*Function For Changing/Entering No. of branches
 void inputbranch(int* branches){
     *branches=0;
     checkNoBranch(branches);
